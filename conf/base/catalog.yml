@@ -1,0 +1,41 @@
+comic_urls:
+    type: IncrementalDataSet
+    dataset: text.TextDataSet
+    path: data/01_raw/comic_urls
+    filename_suffix: .txt
+
+
+comic_html:
+    type: IncrementalDataSet
+    dataset: text.TextDataSet
+    path: data/01_raw/comic_html
+    filename_suffix: .html
+
+
+image_metadata:
+    type: IncrementalDataSet
+    dataset: yaml.YAMLDataSet
+    path: data/02_intermediate/image_metadata
+    filename_suffix: .yml
+
+
+images:
+    type: IncrementalDataSet
+    dataset:
+        type: text.TextDataSet
+        save_args:
+            mode: wb
+        load_args:
+            mode: rb
+    path: data/02_intermediate/images
+    filename_suffix: .jpeg
+
+
+images_by_title:
+    type: IncrementalDataSet
+    dataset:
+        type: text.TextDataSet
+        save_args:
+            mode: wb
+    path: data/03_primary/images
+    filename_suffix: .jpeg
