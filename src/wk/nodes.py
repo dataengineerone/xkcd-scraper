@@ -30,6 +30,7 @@ def download_url_html(comic_urls: Dict[str, str]) -> Dict[str, str]:
 
 def extract_image_metadata(comic_html: Dict[str, str]) -> Dict[str, Dict[str, str]]:
     import re
+    import html as html_lib
 
     image_metadata = {}
 
@@ -38,7 +39,7 @@ def extract_image_metadata(comic_html: Dict[str, str]) -> Dict[str, Dict[str, st
         if len(matches) <= 0:
             raise Exception(f"No image match found for {comic_id}")
         image_url, image_title = matches[0]
-        image_metadata[comic_id] = {'url': f"http:{image_url}", 'title': image_title}
+        image_metadata[comic_id] = {'url': f"http:{image_url}", 'title': html_lib.unescape(image_title)}
 
     return image_metadata
 

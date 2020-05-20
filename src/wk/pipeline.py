@@ -60,7 +60,7 @@ def create_pipelines(**kwargs) -> Dict[str, Pipeline]:
     ])
 
     group_images = Pipeline([
-        node(save_images_by_title, inputs=["image_metadata", "images"], outputs="images_by_title")
+        node(save_images_by_title, inputs=["image_metadata", "images"], outputs="images_by_title", confirms="image_metadata")
     ])
 
     return {
